@@ -18,10 +18,10 @@ Currently support mRNA subtyping:
     method](https://www.nature.com/articles/nature14129) or random
     forest method by training TCGA data.
 -   BLCA using random forest (rf) method by training TCGA data.
--   STAD using random forest (rf) method by training TCGA data.
 -   ESCA using random forest (rf) method by training TCGA data.
 -   ESCC using random forest (rf) method by training TCGA data.
 -   BRCA using PAM50 method based on R package genefu.
+-   STAD using random forest (rf) method by training TCGA data.
 
 ## Latest release
 
