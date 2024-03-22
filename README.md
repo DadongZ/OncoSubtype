@@ -25,26 +25,20 @@ Currently support mRNA subtyping:
 
 ## Latest release
 
-0.2.4 <!-- badges: start --> <!-- badges: end -->
+1.0.0 <!-- badges: start --> <!-- badges: end -->
 
 ## Installation
 
 You can install the released version through:
 
 ``` r
-install.packages("mlsubtyping_0.2.4.tar.gz", repos = NULL, type="source")
-```
-
-Or
-
-``` r
-R CMD INSTALL mlsubtyping_0.2.4.tar.gz
+install.packages("mlsubtyping")
 ```
 
 ## Example
 
-This is a basic example for predicting the subtypes for (Lung Squamous
-Cell Carcinoma) LUSC.
+This is a basic example for predicting the subtypes for Lung Squamous
+Cell Carcinoma (LUSC).
 
 ### Predict LUSC mRNA Expression Subtypes using [nearest centroids method](https://clincancerres.aacrjournals.org/content/16/19/4864)
 

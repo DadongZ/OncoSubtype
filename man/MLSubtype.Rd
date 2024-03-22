@@ -24,7 +24,7 @@ MLSubtype(
 \item{seed}{integer seed to use.}
 }
 \value{
-an object of class "SubtypeClass" with four slots: genes used for predictiong, predicted subtypes of samples, a matrix of predicting scores, and the method.
+An object of class "SubtypeClass" with four slots: genes used for predictiong, predicted subtypes of samples, a matrix of predicting scores, and the method.
 }
 \description{
 Predict the subtypes of selected cancer type using machine learning
@@ -35,4 +35,13 @@ data <- get_median_centered(example_fpkm)
 data <- assays(data)$centered
 rownames(data) <- rowData(example_fpkm)$external_gene_name
 MLSubtype(data, disease = 'LUAD', method = 'rf', seed = 123)
+}
+\references{
+\enumerate{
+\item \insertRef{wilkerson2010}{mlsubtyping}
+
+\item \insertRef{wilkerson2012}{mlsubtyping}
+
+\item \insertRef{tcga2015}{mlsubtyping}
+}
 }

@@ -1,11 +1,10 @@
 Package: mlsubtyping
 Type: Package
-Title: Predict the mRNA subtypes of cancer using published methods
+Title: Predict cancer subtypes based on TCGA data using machine learning method
 Version: 1.0.0
-Author: Dadong Zhang <dadong.zhang@q2labsolutions.com>
-Maintainer: Dadong Zhang <dadong.zhang@q2labsolutions.com>
-Description: Provide functionality for cancer subtyping using existing published
-    methods or machine learning based on TCGA data.
+Author: Dadong Zhang <dadong.zhang.shared@gmail.com>
+Maintainer: Dadong Zhang <dadong.zhang.shared@gmail.com>
+Description: Provide functionality for cancer subtyping using nearest centroids or machine learning methods based on TCGA data.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -27,7 +26,10 @@ Imports:
     tibble,
     dplyr,
     limma,
-    rlang
+    rlang,
+    Rdpack
+RdMacros:
+    Rdpack
 Depends:
     SummarizedExperiment,
     R (>= 3.63),

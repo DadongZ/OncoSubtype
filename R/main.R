@@ -116,12 +116,18 @@ get_rf_pred <- function(train_set, test_set, method = 'rf', seed = NULL){
 #' @param method character string of the method to use currently support 'rf'.
 #' @param seed integer seed to use.
 #' @param removeBatch whether do batch effect correction using \code{limma::removeBatchEffect}, default TRUE.
-#' @return an object of class "SubtypeClass" with four slots: genes used for predictiong, predicted subtypes of samples, a matrix of predicting scores, and the method.
+#' @return An object of class "SubtypeClass" with four slots: genes used for predictiong, predicted subtypes of samples, a matrix of predicting scores, and the method.
+#' @references
+#' \enumerate{
+#' \item \insertRef{wilkerson2010}{mlsubtyping}
+#'
+#' \item \insertRef{wilkerson2012}{mlsubtyping}
+#'
+#' \item \insertRef{tcga2015}{mlsubtyping}
+#'}
 #' @export
 #' @import SummarizedExperiment
-#' @import caret
-#' @import randomForest
-#' @import e1071
+#' @import caret randomForest e1071 Rdpack
 #' @importFrom methods new
 #' @importFrom limma removeBatchEffect
 #' @importFrom stats cor median predict

@@ -1,5 +1,5 @@
 ---
-title: "mRNA Subtyping"
+title: "Cancer subtyping using NCC or machine learning methods based on TCGA data"
 author: "Dadong Zhang"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -18,9 +18,6 @@ knitr::opts_chunk$set(
 
 # mlsubtyping
 
-## Latest version
-
-0.2.4
 <!-- badges: start -->
 <!-- badges: end -->
 
@@ -33,16 +30,9 @@ Currently support mRNA subtyping for LUSC, LUAD, HNSC, STAD, and BLCA using [nea
 You can install the latest released version by
 
 ``` r
-install.packages("mlsubtyping_0.2.4.tar.gz", repos = NULL, type="source")
+install.packages("mlsubtyping")
 ```
-Or
-``` r
-devtools::install_github("u1072932/mlsubtyping")
-```
-Or
-``` r
-R CMD INSTALL mlsubtyping_0.2.4.tar.gz
-```
+
 ## Example
 
 This is a basic example for predicting the subtypes for LUSC.
