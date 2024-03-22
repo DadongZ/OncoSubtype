@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 
 Provide functionality for cancer subtyping using existing published methods or machine learning based on TCGA data.
 
-Currently support mRNA subtyping for LUSC, LUAD, HNSC, STAD, and BLCA using [nearest centroids method](https://clincancerres.aacrjournals.org/content/16/19/4864) or machine-learning-based method by training TCGA data.
+Currently support mRNA subtyping for LUSC, LUAD, HNSC, STAD, and BLCA using [nearest centroids method](https://aacrjournals.org/clincancerres/article/16/19/4864/75620/Lung-Squamous-Cell-Carcinoma-mRNA-Expression) or machine-learning-based method by training TCGA data.
 
 ## Installation
 
@@ -37,7 +37,7 @@ install.packages("OncoSubtype")
 
 This is a basic example for predicting the subtypes for LUSC.
 
-### Predict (Lung Squamous Cell Carcinoma) LUSC  mRNA Expression Subtypes using [wilkerson method](https://clincancerres.aacrjournals.org/content/16/19/4864)
+### Predict (Lung Squamous Cell Carcinoma) LUSC  mRNA Expression Subtypes using [wilkerson method](https://aacrjournals.org/clincancerres/article/16/19/4864/75620/Lung-Squamous-Cell-Carcinoma-mRNA-Expression)
 
 ```{r wilkerson, eval=FALSE}
 library(OncoSubtype)
