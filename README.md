@@ -9,7 +9,7 @@ methods or machine learning based on TCGA data.
 Currently support mRNA subtyping:
 
 -   LUSC using [nearest centroids
-    method](https://clincancerres.aacrjournals.org/content/16/19/4864)
+    method](https://aacrjournals.org/clincancerres/article/16/19/4864/75620/Lung-Squamous-Cell-Carcinoma-mRNA-Expression)
     or random forest method by training TCGA data.
 -   LUAD using [nearest centroids
     method](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0036530)
@@ -40,7 +40,7 @@ install.packages("OncoSubtype")
 This is a basic example for predicting the subtypes for Lung Squamous
 Cell Carcinoma (LUSC).
 
-### Predict LUSC mRNA Expression Subtypes using [nearest centroids method](https://clincancerres.aacrjournals.org/content/16/19/4864)
+### Predict LUSC mRNA Expression Subtypes using [nearest centroids method](https://aacrjournals.org/clincancerres/article/16/19/4864/75620/Lung-Squamous-Cell-Carcinoma-mRNA-Expression)
 
 ``` r
 library(OncoSubtype)

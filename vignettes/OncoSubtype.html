@@ -12,9 +12,9 @@
 
 <meta name="author" content="Dadong Zhang" />
 
-<meta name="date" content="2024-03-21" />
+<meta name="date" content="2024-03-22" />
 
-<title>Cancer subtyping using NCC or machine learning methods based on TCGA data</title>
+<title>Predict cancer subtypes using NCC or machine learning methods based on TCGA data</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -338,15 +338,15 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<h1 class="title toc-ignore">Cancer subtyping using NCC or machine
-learning methods based on TCGA data</h1>
+<h1 class="title toc-ignore">Predict cancer subtypes using NCC or
+machine learning methods based on TCGA data</h1>
 <h4 class="author">Dadong Zhang</h4>
-<h4 class="date">2024-03-21</h4>
+<h4 class="date">2024-03-22</h4>
 
 
 
-<div id="mlsubtyping" class="section level1">
-<h1>mlsubtyping</h1>
+<div id="oncosubtype" class="section level1">
+<h1>OncoSubtype</h1>
 <!-- badges: start -->
 <!-- badges: end -->
 <p>Provide functionality for cancer subtyping using existing published
@@ -358,7 +358,7 @@ data.</p>
 <div id="installation" class="section level2">
 <h2>Installation</h2>
 <p>You can install the latest released version by</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;mlsubtyping&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;OncoSubtype&quot;</span>)</span></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2>Example</h2>
@@ -367,19 +367,19 @@ data.</p>
 <h3>Predict (Lung Squamous Cell Carcinoma) LUSC mRNA Expression Subtypes
 using <a href="https://clincancerres.aacrjournals.org/content/16/19/4864">wilkerson
 method</a></h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(mlsubtyping)</span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(OncoSubtype)</span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2121</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_median_centered</span>(example_fpkm)</span>
 <span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">assays</span>(data)<span class="sc">$</span>centered</span>
 <span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="fu">rownames</span>(data) <span class="ot">&lt;-</span> <span class="fu">rowData</span>(example_fpkm)<span class="sc">$</span>external_gene_name</span>
 <span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="co"># use default wilkerson&#39;s nearest centroids method</span></span>
-<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>output1 <span class="ot">&lt;-</span> <span class="fu">CentroidsSubtype</span>(data, <span class="at">disease =</span> <span class="st">&#39;LUSC&#39;</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>output1 <span class="ot">&lt;-</span> <span class="fu">centroids_subtype</span>(data, <span class="at">disease =</span> <span class="st">&#39;LUSC&#39;</span>)</span>
 <span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="fu">table</span>(output1<span class="sc">$</span>subtypes)</span></code></pre></div>
 </div>
 <div id="using-random-forest-model-by-training-tcga-lusc-data" class="section level3">
 <h3>Using random forest model by training TCGA LUSC data</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>output2 <span class="ot">&lt;-</span> <span class="fu">MLSubtype</span>(data, <span class="at">disease =</span> <span class="st">&#39;LUSC&#39;</span>, <span class="at">method =</span> <span class="st">&#39;rf&#39;</span>)</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>output2 <span class="ot">&lt;-</span> <span class="fu">ml_subtype</span>(data, <span class="at">disease =</span> <span class="st">&#39;LUSC&#39;</span>, <span class="at">method =</span> <span class="st">&#39;rf&#39;</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">table</span>(output1<span class="sc">$</span>subtypes)</span>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">confusionMatrix</span>(output1, output2)</span></code></pre></div>
 </div>
