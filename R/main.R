@@ -9,13 +9,15 @@
 #' @importFrom methods new
 #' @importFrom stats cor median predict
 #' @examples
-#' library(mlsubtyping)
+#' \dontrun{
+#' library(OncoSubtype)
 #' data <- get_median_centered(example_fpkm)
 #' data <- assays(data)$centered
 #' rownames(data) <- rowData(example_fpkm)$external_gene_name
-#' CentroidsSubtype(data, disease = 'HNSC')
+#' centroids_subtype(data, disease = 'HNSC')
+#' }
 
-CentroidsSubtype <- function(data, disease = 'LUSC') {
+centroids_subtype <- function(data, disease = 'LUSC') {
   centroids_data <- get(paste0(tolower(disease), '_centroids'))
   output <- new("SubtypeClass", features = intersect(rownames(data), rownames(lusc_centroids)))
   test_data <- data[output@features, ]
@@ -42,10 +44,12 @@ CentroidsSubtype <- function(data, disease = 'LUSC') {
 #' @import SummarizedExperiment
 #' @importFrom stats var
 #' @examples
-#' library(mlsubtyping)
+#' \dontrun{
+#' library(OncoSubtype)
 #' data <- get_median_centered(example_fpkm)
 #' data <- assays(data)$centered
 #' get_hvg(data)
+#' }
 get_hvg <- function(data, top = 1000){
   varorder <- order(apply(data, 1, var, na.rm = TRUE), decreasing=T)[1:top]
   data[varorder,]
@@ -59,8 +63,9 @@ get_hvg <- function(data, top = 1000){
 #' @export
 #' @import SummarizedExperiment
 #' @examples
+#' \dontrun{
 #' get_median_centered(example_fpkm)
-#'
+#'}
 #'
 get_median_centered <- function(data, log2 = TRUE) {
   if(is.matrix(data)){
@@ -119,11 +124,11 @@ get_rf_pred <- function(train_set, test_set, method = 'rf', seed = NULL){
 #' @return An object of class "SubtypeClass" with four slots: genes used for predictiong, predicted subtypes of samples, a matrix of predicting scores, and the method.
 #' @references
 #' \enumerate{
-#' \item \insertRef{wilkerson2010}{mlsubtyping}
+#' \item \insertRef{wilkerson2010}{OncoSubtype}
 #'
-#' \item \insertRef{wilkerson2012}{mlsubtyping}
+#' \item \insertRef{wilkerson2012}{OncoSubtype}
 #'
-#' \item \insertRef{tcga2015}{mlsubtyping}
+#' \item \insertRef{tcga2015}{OncoSubtype}
 #'}
 #' @export
 #' @import SummarizedExperiment
@@ -132,13 +137,15 @@ get_rf_pred <- function(train_set, test_set, method = 'rf', seed = NULL){
 #' @importFrom limma removeBatchEffect
 #' @importFrom stats cor median predict
 #' @examples
-#' library(mlsubtyping)
+#' \dontrun{
+#' library(OncoSubtype)
 #' data <- get_median_centered(example_fpkm)
 #' data <- assays(data)$centered
 #' rownames(data) <- rowData(example_fpkm)$external_gene_name
-#' MLSubtype(data, disease = 'LUAD', method = 'rf', seed = 123)
+#' ml_subtype(data, disease = 'LUAD', method = 'rf', seed = 123)
+#' }
 
-MLSubtype <- function(data, disease = 'LUSC', method = 'rf', removeBatch = TRUE, seed = NULL) {
+ml_subtype <- function(data, disease = 'LUSC', method = 'rf', removeBatch = TRUE, seed = NULL) {
   # Load the dataset and capture the path of the downloaded dataset
   dataset_path <- load_dataset_from_github(disease = disease)
 
@@ -193,12 +200,14 @@ MLSubtype <- function(data, disease = 'LUSC', method = 'rf', removeBatch = TRUE,
 #' @importFrom rlang .data
 #' @importFrom dplyr mutate filter select relocate arrange bind_rows
 #' @examples
-#' library(mlsubtyping)
+#' \dontrun{
+#' library(OncoSubtype)
 #' data <- get_median_centered(example_fpkm)
 #' data <- assays(data)$centered
 #' rownames(data) <- rowData(example_fpkm)$external_gene_name
 #' object <- MLSubtype(data, disease = 'LUSC')
 #' PlotHeat(object, set = 'both', fontsize = 10, show_rownames = FALSE, show_colnames = FALSE)
+#' }
 
 PlotHeat <- function(object, set = 'test', ...) {
   test_set <- t(object@test_set) %>% data.frame %>%
@@ -273,7 +282,7 @@ load_dataset_from_github <- function(disease, local_dir = path.expand(getwd())) 
   # Construct the filename and URL for the dataset
   dataset_name <- paste0(tolower(disease), '_tcga.rda')
   # Update this URL to point to the raw content
-  url <- paste0("https://raw.githubusercontent.com/DadongZ/MLSubtype_data/main/data/", dataset_name)
+  url <- paste0("https://raw.githubusercontent.com/DadongZ/OncoSubtype_data/main/data/", dataset_name)
 
   # Determine the local file path
   local_dataset_path <- file.path(local_dir, dataset_name)

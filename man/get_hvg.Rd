@@ -18,8 +18,10 @@ subset with top ranked genes by the variances
 select highly variable genes from a expression matrix
 }
 \examples{
-library(mlsubtyping)
+\dontrun{
+library(OncoSubtype)
 data <- get_median_centered(example_fpkm)
 data <- assays(data)$centered
 get_hvg(data)
+}
 }

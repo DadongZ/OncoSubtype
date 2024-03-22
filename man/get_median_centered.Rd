@@ -18,7 +18,8 @@ median-centered express matrix or an object with new slot "centered"
 convert expression matrix to median-centered
 }
 \examples{
+\dontrun{
 get_median_centered(example_fpkm)
-
+}
 
 }

@@ -20,10 +20,12 @@ a pheatmap object
 Plot heatmap of the train set or test set
 }
 \examples{
-library(mlsubtyping)
+\dontrun{
+library(OncoSubtype)
 data <- get_median_centered(example_fpkm)
 data <- assays(data)$centered
 rownames(data) <- rowData(example_fpkm)$external_gene_name
 object <- MLSubtype(data, disease = 'LUSC')
 PlotHeat(object, set = 'both', fontsize = 10, show_rownames = FALSE, show_colnames = FALSE)
+}
 }

@@ -1,4 +1,4 @@
 library(testthat)
-library(mlsubtyping)
+library(OncoSubtype)
 
-test_check("mlsubtyping")
+test_check("OncoSubtype")
