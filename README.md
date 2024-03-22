@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# mlsubtyping
+# OncoSubtype
 
 Provide functionality for cancer subtyping using existing published
 methods or machine learning based on TCGA data.
@@ -32,7 +32,7 @@ Currently support mRNA subtyping:
 You can install the released version through:
 
 ``` r
-install.packages("mlsubtyping")
+install.packages("OncoSubtype")
 ```
 
 ## Example
@@ -43,13 +43,13 @@ Cell Carcinoma (LUSC).
 ### Predict LUSC mRNA Expression Subtypes using [nearest centroids method](https://clincancerres.aacrjournals.org/content/16/19/4864)
 
 ``` r
-library(mlsubtyping)
+library(OncoSubtype)
 library(tidyverse)
 data <- get_median_centered(example_fpkm)
 data <- assays(data)$centered
 rownames(data) <- rowData(example_fpkm)$external_gene_name
 # use default wilkerson's method
-output1 <- CentroidsSubtype(data, disease = 'LUSC')
+output1 <- centroids_subtype(data, disease = 'LUSC')
 table(output1@subtypes)
 #> 
 #>     basal classical primitive secretory 
@@ -59,7 +59,7 @@ table(output1@subtypes)
 ### Using random forest model by training TCGA LUSC data
 
 ``` r
-output2 <- MLSubtype(data, disease = 'LUSC', method = 'rf', seed = 123)
+output2 <- ml_subtype(data, disease = 'LUSC', method = 'rf', seed = 123)
 table(output2@subtypes)
 #> 
 #>     basal classical primitive secretory 
@@ -131,4 +131,4 @@ PlotHeat(object = output2, set = 'both', fontsize = 10,
 
 <img src="man/figures/README-heatmap-1.png" width="100%" />
 
-## Report bugs or issues at [here](https://dgit.eacc.ds.quintiles.com/u1072932/mlsubtyping/issues)
+## Report bugs or issues at [here](https://github.com/DadongZ/OncoSubtype/issues)
