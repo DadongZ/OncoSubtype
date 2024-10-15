@@ -32,5 +32,5 @@ RdMacros:
     Rdpack
 Depends:
     SummarizedExperiment,
-    R (>= 3.63),
+    R (>= 3.6.3),
 Config/testthat/edition: 3
